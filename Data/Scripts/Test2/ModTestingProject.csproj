@@ -54,7 +54,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="SetiBase.cs" />
+    <Compile Include="BetterWelder.cs" />
+    <Compile Include="OreSpawningSensor.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Properties\" />
