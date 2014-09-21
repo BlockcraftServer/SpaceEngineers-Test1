@@ -25,38 +25,35 @@ namespace SETItest
 
         public override void Close()
         {
-
             Sensor.StateChanged += sensor_StateChanged;
-
         }
 
         public override void Init(MyObjectBuilder_EntityBase objectBuilder)
         {
             Sensor = Entity as IMySensorBlock;
             Sensor.StateChanged += sensor_StateChanged;
-
         }
 
-        void sensor_StateChanged(bool obj)
+        void sensor_StateChanged(bool entering)
         {
-
-            MyObjectBuilder_FloatingObject floatingObjectBuilder = new MyObjectBuilder_FloatingObject();
-            floatingObjectBuilder.Item = new MyObjectBuilder_InventoryItem()
+            if (entering)
             {
-                Amount = 300,
-                Content = new MyObjectBuilder_Ore() { SubtypeName = "Stone" }
-            };
-            floatingObjectBuilder.PersistentFlags = MyPersistentEntityFlags2.InScene;
-            floatingObjectBuilder.PositionAndOrientation = new MyPositionAndOrientation()
-            {
-                Position = Sensor.WorldMatrix.Translation + Sensor.WorldMatrix.Forward * 1.5f,
-                Forward = Sensor.WorldMatrix.Forward,
-                Up = Sensor.WorldMatrix.Up
-            };
-            var floatingObject = Sandbox.ModAPI.MyAPIGateway.Entities.CreateFromObjectBuilderAndAdd(floatingObjectBuilder);
 
-
-
+                MyObjectBuilder_FloatingObject floatingObjectBuilder = new MyObjectBuilder_FloatingObject();
+                floatingObjectBuilder.Item = new MyObjectBuilder_InventoryItem()
+                {
+                    Amount = 100,
+                    Content = new MyObjectBuilder_Ore() { SubtypeName = "Stone" }
+                };
+                floatingObjectBuilder.PersistentFlags = MyPersistentEntityFlags2.InScene;
+                floatingObjectBuilder.PositionAndOrientation = new MyPositionAndOrientation()
+                {
+                    Position = Sensor.WorldMatrix.Translation + Sensor.WorldMatrix.Forward * 1.5f,
+                    Forward = Sensor.WorldMatrix.Forward,
+                    Up = Sensor.WorldMatrix.Up
+                };
+                var floatingObject = Sandbox.ModAPI.MyAPIGateway.Entities.CreateFromObjectBuilderAndAdd(floatingObjectBuilder);
+            }
         }
 
         public override void MarkForClose()
