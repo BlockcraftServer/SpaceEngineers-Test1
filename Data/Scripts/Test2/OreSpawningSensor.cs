@@ -14,12 +14,10 @@ using Sandbox.ModAPI;
 using Sandbox.ModAPI.Ingame;
 using Sandbox.ModAPI.Interfaces;
 
-
-
-namespace SETItest
+namespace ModTestingProject
 {
     [MyEntityComponentDescriptor(typeof(MyObjectBuilder_SensorBlock))]
-    public class SetiBase : MyGameLogicComponent
+    public class OreSpawningSensor : MyGameLogicComponent
     {
         IMySensorBlock Sensor;
 
@@ -38,7 +36,6 @@ namespace SETItest
         {
             if (entering)
             {
-
                 MyObjectBuilder_FloatingObject floatingObjectBuilder = new MyObjectBuilder_FloatingObject();
                 floatingObjectBuilder.Item = new MyObjectBuilder_InventoryItem()
                 {
@@ -81,7 +78,5 @@ namespace SETItest
         {
 
         }
-
-
     }
 }
