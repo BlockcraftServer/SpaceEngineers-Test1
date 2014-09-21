@@ -43,7 +43,7 @@ namespace SETItest
             MyObjectBuilder_FloatingObject floatingObjectBuilder = new MyObjectBuilder_FloatingObject();
             floatingObjectBuilder.Item = new MyObjectBuilder_InventoryItem()
             {
-                Amount = 100,
+                Amount = 300,
                 Content = new MyObjectBuilder_Ore() { SubtypeName = "Stone" }
             };
             floatingObjectBuilder.PersistentFlags = MyPersistentEntityFlags2.InScene;
